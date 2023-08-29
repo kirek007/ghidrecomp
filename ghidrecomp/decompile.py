@@ -89,7 +89,7 @@ def decompile_to_single_file(path: Path,
     else:
         monitor = ConsoleTaskMonitor().DUMMY
 
-    decompiler = CppExporter(create_header, create_file, emit_types, exclude_tags, tags)
+    decompiler = CppExporter(None, create_header, create_file, emit_types, exclude_tags, tags)
     decompiler.export(c_file, prog, prog.getMemory(), monitor)
 
 
@@ -204,6 +204,7 @@ def decompile(args: Namespace):
             print(f"Decompiling {len(all_funcs)} functions using Ghidra's CppExporter")
             c_file = Path(args.output_path) / Path(bin_path.name + '.c')
             start = time()
+            decompilations = []
             decompile_to_single_file(c_file, program)
             print(f'Decompiled {len(all_funcs)} functions for {program.name} in {time() - start}')
             print(f"Wrote results to {c_file} and {c_file.stem + '.h'}")
