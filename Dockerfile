@@ -7,7 +7,7 @@ WORKDIR /home/vscode/
 
 COPY . ghidrecomp
 # Install ghidrecomp
-RUN su vscode -c "cd ghidrecomp && pip install -e ." 2>&1
+RUN cd ghidrecomp && pip install -e .
 
 # runs as a standard user
 USER vscode
