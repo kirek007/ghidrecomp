@@ -26,7 +26,7 @@ jobs:
       - name: Get Version For Tag
         id: get_version
         run: |
-          pip install -e ghidrecomp
+          pip install -e .
           version=$(ghidrecomp -v)
           echo "ghidrecomp_ver=$version" >> $GITHUB_OUTPUT
           echo $ghidrecomp_ver

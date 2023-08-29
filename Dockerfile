@@ -5,7 +5,7 @@ FROM ghcr.io/clearbluejar/ghidra-python:${VARIANT}
 
 WORKDIR /home/vscode/
 
-COPY ghidrecomp ghidrecomp
+COPY . ghidrecomp
 # Install ghidrecomp
 RUN su vscode -c "pip install --upgrade pip && pip install -e ghidrecomp" 2>&1
 
